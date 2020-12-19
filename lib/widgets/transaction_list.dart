@@ -15,7 +15,7 @@ class _TransactionListState extends State<TransactionList> {
 
   final amountController = TextEditingController();
 
-  final List<Transaction> transactions = [
+  final List<Transaction> _userTransactions = [
     Transaction(id: 't1',
         title: 'New Shoes',
         amount: 69.9,
@@ -28,103 +28,49 @@ class _TransactionListState extends State<TransactionList> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("expenses"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-                color: Colors.blue,
-                width: double.infinity,
-                child:
-                Card(
-                  color: Colors.blue,
-                  child: Text('CHARTS'),)),
-            Card(
-              elevation: 5,
-              child:
+    return             Column(
+      children : _userTransactions.map((tx){
+        return Card(
+          child:
+          Row(
+            children: [
               Container(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextField(
-                    decoration: InputDecoration(
-                      labelText: "Title",
-                    ),
-                      // onChanged: (val) => {titleInput = val},
-                      controller: titleController,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          labelText: "Amount",
-                      ),
-                      // onChanged: (val) => {amountInput = val},
-                      controller: amountController,
-                    ),
-                    FlatButton(
-                        textColor: Colors.purple,
-                        child: Text('Add Transaction'),
-                        onPressed: ()=>{
-                          print(amountInput),
-                          print(titleInput),
-                        })
-                  ],
-                ),
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 15.0,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(color : Colors.purple , width: 2,),
+                  ),
+                  padding: EdgeInsets.all(10),
+                  child: Text('\$'+tx.amount.toString(),style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.purple,
+                    fontWeight: FontWeight.bold,
+                  ),)
               ),
-            ),
-            Column(
-                children : transactions.map((tx){
-                  return Card(
-                    child:
-                    Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 15.0,
-                          ),
-                            decoration: BoxDecoration(
-                              border: Border.all(color : Colors.purple , width: 2,),
-                            ),
-                            padding: EdgeInsets.all(10),
-                            child: Text('\$'+tx.amount.toString(),style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.purple,
-                              fontWeight: FontWeight.bold,
-                            ),)
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(tx.title,style: TextStyle
-                              (
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),),
-                            Text(
-                                DateFormat('yyyy-MM-dd').format(tx.date),style: TextStyle
-                              (
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                                color: Colors.blueGrey
-                            )),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(tx.title,style: TextStyle
+                    (
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),),
+                  Text(
+                      DateFormat('yyyy-MM-dd').format(tx.date),style: TextStyle
+                    (
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Colors.blueGrey
+                  )),
 
-                          ],
-                        )
-                      ],
+                ],
+              )
+            ],
 
-                    ),
-                  );
-            }).toList(),)
-          ],
-        ),
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
-    );
+          ),
+        );
+      }).toList(),);
   }
 }
