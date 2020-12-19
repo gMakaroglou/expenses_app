@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personal_expenses_app/models/transaction.dart';
+import 'package:personal_expenses_app/widgets/new_transaction.dart';
+import 'package:personal_expenses_app/widgets/transaction_list.dart';
+import 'package:personal_expenses_app/widgets/user_transaction.dart';
 
 class  BasicStructure extends StatelessWidget {
   String titleInput;
@@ -40,83 +43,7 @@ class  BasicStructure extends StatelessWidget {
                 Card(
                   color: Colors.blue,
                   child: Text('CHARTS'),)),
-            Card(
-              elevation: 5,
-              child:
-              Container(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Title",
-                      ),
-                      // onChanged: (val) => {titleInput = val},
-                      controller: titleController,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Amount",
-                      ),
-                      // onChanged: (val) => {amountInput = val},
-                      controller: amountController,
-                    ),
-                    FlatButton(
-                        textColor: Colors.purple,
-                        child: Text('Add Transaction'),
-                        onPressed: ()=>{
-                          print(amountInput),
-                          print(titleInput),
-                        })
-                  ],
-                ),
-              ),
-            ),
-            Column(
-              children : transactions.map((tx){
-                return Card(
-                  child:
-                  Row(
-                    children: [
-                      Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 15.0,
-                          ),
-                          decoration: BoxDecoration(
-                            border: Border.all(color : Colors.purple , width: 2,),
-                          ),
-                          padding: EdgeInsets.all(10),
-                          child: Text('\$'+tx.amount.toString(),style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.purple,
-                            fontWeight: FontWeight.bold,
-                          ),)
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(tx.title,style: TextStyle
-                            (
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),),
-                          Text(
-                              DateFormat('yyyy-MM-dd').format(tx.date),style: TextStyle
-                            (
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                              color: Colors.blueGrey
-                          )),
-
-                        ],
-                      )
-                    ],
-
-                  ),
-                );
-              }).toList(),)
+          UserTransactions(),
           ],
         ),
       ),
