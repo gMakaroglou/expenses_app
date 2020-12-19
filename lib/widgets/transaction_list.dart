@@ -28,49 +28,54 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.transactions);
   @override
   Widget build(BuildContext context) {
-    return             Column(
-      children : transactions.map((tx){
-        return Card(
-          child:
-          Row(
-            children: [
-              Container(
-                  margin: EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 15.0,
-                  ),
-                  decoration: BoxDecoration(
-                    border: Border.all(color : Colors.purple , width: 2,),
-                  ),
-                  padding: EdgeInsets.all(10),
-                  child: Text('\$'+tx.amount.toString(),style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.purple,
-                    fontWeight: FontWeight.bold,
-                  ),)
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(tx.title,style: TextStyle
-                    (
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),),
-                  Text(
-                      DateFormat('yyyy-MM-dd').format(tx.date),style: TextStyle
-                    (
+    return
+      Container(
+        height: 300,
+        child : SingleChildScrollView(
+        child: Column(
+        children : transactions.map((tx){
+          return Card(
+            child:
+            Row(
+              children: [
+                Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 15.0,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(color : Colors.purple , width: 2,),
+                    ),
+                    padding: EdgeInsets.all(10),
+                    child: Text('\$'+tx.amount.toString(),style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.purple,
                       fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: Colors.blueGrey
-                  )),
+                    ),)
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(tx.title,style: TextStyle
+                      (
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),),
+                    Text(
+                        DateFormat('yyyy-MM-dd').format(tx.date),style: TextStyle
+                      (
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.blueGrey
+                    )),
 
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
 
-          ),
-        );
-      }).toList(),);
+            ),
+          );
+        }).toList(),),)
+      );
   }
 }

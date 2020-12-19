@@ -31,20 +31,22 @@ class  BasicStructure extends StatelessWidget {
       appBar: AppBar(
         title: Text("expenses"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-                color: Colors.blue,
-                width: double.infinity,
-                child:
-                Card(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
                   color: Colors.blue,
-                  child: Text('CHARTS'),)),
-          UserTransactions(),
-          ],
+                  width: double.infinity,
+                  child:
+                  Card(
+                    color: Colors.blue,
+                    child: Text('CHARTS'),)),
+            UserTransactions(),
+            ],
+          ),
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
