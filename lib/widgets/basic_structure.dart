@@ -19,18 +19,18 @@ class _BasicStructureState extends State<BasicStructure> {
 
   final amountController = TextEditingController();
   final List<Transaction> _userTransactions = [
-    Transaction(id: 't1',
-        title: 'New Shoes',
-        amount: 69.9,
-        date: DateTime.now()),
-    Transaction(id: 't2',
-        title: 'Weekly Groceries',
-        amount: 35.34,
-        date: DateTime.now()),
-    Transaction(id: 't3',
-        title: 'Monitor',
-        amount: 350.67,
-        date: DateTime.now())
+    // Transaction(id: 't1',
+    //     title: 'New Shoes',
+    //     amount: 69.9,
+    //     date: DateTime.now()),
+    // Transaction(id: 't2',
+    //     title: 'Weekly Groceries',
+    //     amount: 35.34,
+    //     date: DateTime.now()),
+    // Transaction(id: 't3',
+    //     title: 'Monitor',
+    //     amount: 350.67,
+    //     date: DateTime.now())
   ];
   void _addNewTransaction(
       String title,double amount){

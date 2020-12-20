@@ -32,7 +32,17 @@ class TransactionList extends StatelessWidget {
       Container(
         height: 300,
         // child : SingleChildScrollView(
-        child: ListView.builder(
+        child: transactions.isEmpty ? Column(
+          children: [
+            Text('No Transactions added yet!',style: Theme.of(context).textTheme.title),
+            SizedBox(height:20.0),
+            Container(
+              height: 200,
+              child: Image.asset
+                ('assets/images/waiting.png',fit: BoxFit.cover,),
+            )
+          ],
+        ) : ListView.builder(
           itemCount: transactions.length,
           itemBuilder: (context, index)  {
             return Card(
@@ -76,7 +86,7 @@ class TransactionList extends StatelessWidget {
 
               ),
             );
-          },),
+          },)
       // )
       );
   }
