@@ -1,11 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addNewTX;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+
   NewTransaction(this.addNewTX);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
+
   void submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
@@ -14,8 +23,9 @@ class NewTransaction extends StatelessWidget {
       return;
     }
 
-    addNewTX(enteredTitle, enteredAmount);
+    widget.addNewTX(enteredTitle, enteredAmount);
   }
+
   @override
   Widget build(BuildContext context) {
     return             Card(
