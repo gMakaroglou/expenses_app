@@ -59,7 +59,7 @@ class _BasicStructureState extends State<BasicStructure> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expenses Manager"),
+        title: Text("Personal Expenses",style:TextStyle(fontFamily: 'Open Sans')),
         actions: [
           IconButton(icon: Icon(Icons.add),
               onPressed: ()=> _startAddNewTransaction(context))

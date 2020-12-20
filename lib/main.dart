@@ -17,9 +17,29 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      color: Colors.white,
+      // color: Colors.deepPurpleAccent,
+      // darkTheme: ThemeData(
+      //   brightness: Brightness.dark
+      // ),
+      // themeMode: ThemeMode.dark
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
+        accentColor: Colors.purple,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          title: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          )
+        ),
+          appBarTheme: AppBarTheme(textTheme:ThemeData.light().textTheme.copyWith(
+          title: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+          ))
+      )
       ),
       home:BasicStructure(),
     );

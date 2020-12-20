@@ -45,23 +45,23 @@ class TransactionList extends StatelessWidget {
                         horizontal: 15.0,
                       ),
                       decoration: BoxDecoration(
-                        border: Border.all(color : Colors.purple , width: 2,),
+                        border: Border.all(color : Theme.of(context).primaryColor , width: 2,),
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text('\$'+transactions[index].amount.toStringAsFixed(2),style: TextStyle(
                         fontSize: 20,
-                        color: Colors.purple,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                       ),)
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(transactions[index].title,style: TextStyle
-                        (
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),),
+                      Text(transactions[index].title,style:
+                          Theme.of(context).textTheme.title,
+                        // fontWeight: FontWeight.bold,
+                        // fontSize: 16,
+                      ),
                       Text(
                           DateFormat('yyyy-MM-dd').format(transactions[index].date),style: TextStyle
                         (
