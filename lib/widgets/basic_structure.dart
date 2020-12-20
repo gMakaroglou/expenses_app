@@ -5,6 +5,8 @@ import 'package:personal_expenses_app/widgets/new_transaction.dart';
 import 'package:personal_expenses_app/widgets/transaction_list.dart';
 import 'package:personal_expenses_app/widgets/user_transaction.dart';
 
+import 'chart.dart';
+
 class  BasicStructure extends StatefulWidget {
   @override
   _BasicStructureState createState() => _BasicStructureState();
@@ -32,6 +34,14 @@ class _BasicStructureState extends State<BasicStructure> {
     //     amount: 350.67,
     //     date: DateTime.now())
   ];
+  List<Transaction> get _recentTransactions {
+    return (
+    _userTransactions.where((filtertx) {
+      return filtertx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList()
+    );
+
+  }
   void _addNewTransaction(
       String title,double amount){
     final newTx = Transaction(title: title,amount: amount,date: DateTime.now(),id: DateTime.now().toString());
@@ -71,13 +81,15 @@ class _BasicStructureState extends State<BasicStructure> {
             mainAxisAlignment: MainAxisAlignment.start,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                  color: Colors.blue,
-                  width: double.infinity,
-                  child:
-                  Card(
-                    color: Colors.blue,
-                    child: Text('CHART!'),)),
+              //  Chart placeholder
+              // Container(
+              //     color: Colors.blue,
+              //     width: double.infinity,
+              //     child:
+              //     Card(
+              //       color: Colors.blue,
+              //       child: Text('CHART!'),))
+            Chart(_recentTransactions),
             // UserTransactions(),
               TransactionList(_userTransactions),
             ],
